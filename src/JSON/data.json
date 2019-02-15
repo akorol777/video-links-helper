@@ -4,27 +4,27 @@
     "WOG": {
       "local":"wogdomain.dev",
       "stage": "wogdomain.dev",
-      "prod": ""
+      "prod": "watchonline.guide"
     },
     "GREEN": {
       "local":"seasonsepisode.watch",
       "stage": "seasonsepisode.watch",
-      "prod": ""
+      "prod": "seasonsepisode.watch"
     },
     "DARK": {
       "local":"asd.lvh.me",
       "stage": "seasonepisodewatch.com",
-      "prod": ""
+      "prod": "seasonepisodewatch.com"
     },
     "MOVE": {
       "local":"move.lvh.me",
       "stage": "move.dev",
-      "prod": ""
+      "prod": "onlinemovies.watch"
     },
     "OMG": {
       "local":"move_new.lvh.me",
       "stage": "onlinemovies.guide",
-      "prod": ""
+      "prod": "onlinemovies.guide"
     },
     "MSN": {
       "local":"",

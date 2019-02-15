@@ -5,6 +5,8 @@ const Link = (props) => {
   const { activeEnv, data, domain} = props;
 
   const isLocal = () => activeEnv === 'local';
+  const isStage = () => activeEnv === 'stage';
+  const isProd = () => activeEnv === 'prod';
 
   const getProtocol = () => isLocal() ? 'http://' : 'https://';
 
@@ -13,12 +15,20 @@ const Link = (props) => {
       return `${LOCALHOST}?staging_domain=${data[activeEnv]}`;
     }
 
-    return 'test'
+    if (isStage()) {
+      const pr_num = 2129;
+      return `streaming-engine-stagi-pr-${pr_num}.herokuapp.com?staging_domain=${data[activeEnv]}`
+    }
+
+    if (isProd()) {
+      return data[activeEnv]
+    }
   };
 
   const getLink = () => {
     return getProtocol() + getHost();
   };
+
 
   return(
     <div className="link__wrapper">
@@ -28,6 +38,7 @@ const Link = (props) => {
       <a
         href={getLink()}
         target="_blank"
+        rel="noopener noreferrer"
       >{getLink()}</a>
     </div>
   );
