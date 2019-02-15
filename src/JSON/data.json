@@ -1,0 +1,6 @@
+{
+  "env": ["local", "stage", "prod"],
+  "domain": "",
+  "traffic": "",
+  "page": ""
+}

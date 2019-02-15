@@ -1,0 +1,34 @@
+@import 'variables';
+
+.container {
+  padding: $size-xxxs;
+  margin: 0 auto;
+  width: 100%;
+  max-width: $w-container;
+}
+
+.row {
+  display: flex;
+}
+
+.button {
+  margin: $size-xxxxs;
+  padding: $size-xxxxs $size-xxxs;
+  border: 1px solid;
+  border-radius: $border-radius;
+  background-color: $c-btn-btn;
+  color: $c-text;
+  cursor: pointer;
+  transition: color $trans, background-color $trans;
+
+  &.is-active {
+    background-color: $c-btn-active-btn;
+    color: $c-text-active;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: $c-text-active;
+  }
+}
