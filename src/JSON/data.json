@@ -1,6 +1,37 @@
 {
   "env": ["local", "stage", "prod"],
-  "domain": "",
+  "domains": {
+    "WOG": {
+      "local":"wogdomain.dev",
+      "stage": "wogdomain.dev",
+      "prod": ""
+    },
+    "GREEN": {
+      "local":"seasonsepisode.watch",
+      "stage": "seasonsepisode.watch",
+      "prod": ""
+    },
+    "DARK": {
+      "local":"asd.lvh.me",
+      "stage": "seasonepisodewatch.com",
+      "prod": ""
+    },
+    "MOVE": {
+      "local":"move.lvh.me",
+      "stage": "move.dev",
+      "prod": ""
+    },
+    "OMG": {
+      "local":"move_new.lvh.me",
+      "stage": "onlinemovies.guide",
+      "prod": ""
+    },
+    "MSN": {
+      "local":"",
+      "stage": "",
+      "prod": ""
+    }
+  },
   "traffic": "",
-  "page": ""
+  "pages": ""
 }

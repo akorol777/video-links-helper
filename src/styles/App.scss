@@ -1,10 +1,10 @@
 @import 'variables';
 
 .container {
-  padding: $size-xxxs;
   margin: 0 auto;
-  width: 100%;
+  padding: $size-xxxs;
   max-width: $w-container;
+  width: 100%;
 }
 
 .row {
@@ -30,5 +30,19 @@
 
   &:hover {
     color: $c-text-active;
+  }
+}
+
+.link {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    margin: $size-xxxxs;
+    padding: $size-xxxxs $size-xxxs;
+    background-color: $c-label;
+    color: $c-label-text;
   }
 }
