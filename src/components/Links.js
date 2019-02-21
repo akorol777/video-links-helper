@@ -3,26 +3,29 @@ import { connect } from 'react-redux';
 import Link from './Link';
 
 class Links extends Component {
-  domains = this.props.domains;
 
   render() {
+    if (!this.props.links) {
+      return null
+    }
+
     return (
       <div>
-        {Object.keys(this.domains).map((domain) => {
+        {this.props.links.map(({link, domain}, i) => {
           return <Link
-            domain={domain}
-            key={domain}
-            data={this.domains[domain]}
-            activeEnv={this.props.activeEnv}
-          />
+            link = {link}
+            key = {i}
+            domain = {domain}
+          />;
         })}
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
-  activeEnv: state.env
+  activeEnv: state.env,
+  links: state.links
 });
 
 export default connect(mapStateToProps)(Links);
