@@ -3,12 +3,9 @@ import Tab from './Tab';
 import { connect } from 'react-redux';
 import { choose_env } from '../actions/actions';
 
-export class Tabs extends Component {
+export class EnvTabs extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      envTitles: this.props.envTitles
-    };
     this.handleChangeEnv = this.handleChangeEnv.bind(this);
   }
 
@@ -19,11 +16,11 @@ export class Tabs extends Component {
   render() {
     return (
       <div className="row">
-        {this.state.envTitles.map((envTitle, i) => {
+        {this.props.envTitles.map((title, i) => {
           return <Tab
-            envTitle={envTitle}
+            title={title}
             key={i}
-            isActive={this.props.activeEnv === envTitle}
+            isActive={this.props.activeEnv === title}
             handleChangeEnv={this.handleChangeEnv}
           />
         })}
@@ -40,4 +37,4 @@ const mapDispatchToProps = (dispatch) => ({
   chooseEnv: (env) => dispatch(choose_env(env))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
+export default connect(mapStateToProps, mapDispatchToProps)(EnvTabs);

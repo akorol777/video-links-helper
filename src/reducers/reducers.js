@@ -1,6 +1,5 @@
 const linksReducerDefaultState = {
   env: 'local',
-  links: '',
   domain: ''
 };
 
