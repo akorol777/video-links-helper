@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Tab from './Tab';
 import { connect } from 'react-redux';
-import { show_links, choose_env } from '../actions/actions';
+import { choose_env } from '../actions/actions';
 
 export class Tabs extends Component {
   constructor(props) {
@@ -12,13 +12,8 @@ export class Tabs extends Component {
     this.handleChangeEnv = this.handleChangeEnv.bind(this);
   }
 
-  componentDidMount() {
-    this.props.showLinks();
-  }
-
   handleChangeEnv(env) {
     this.props.chooseEnv(env);
-    this.props.showLinks();
   }
 
   render() {
@@ -29,7 +24,7 @@ export class Tabs extends Component {
             envTitle={envTitle}
             key={i}
             isActive={this.props.activeEnv === envTitle}
-           handleChangeEnv={this.handleChangeEnv}
+            handleChangeEnv={this.handleChangeEnv}
           />
         })}
       </div>
@@ -42,8 +37,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  chooseEnv: (env) => dispatch(choose_env(env)),
-  showLinks: (env, domains) => dispatch(show_links(env, domains))
+  chooseEnv: (env) => dispatch(choose_env(env))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
