@@ -4,11 +4,10 @@ import Link from './Link';
 import getLinks from '../selectors/links'
 
 class Links extends Component {
-
   render() {
     return (
       <div>
-        {getLinks(this.props.env).map(({link, domain}, i) => {
+        {getLinks(this.props.store).map(({link, domain}, i) => {
           return <Link
             link = {link}
             key = {i}
@@ -21,7 +20,7 @@ class Links extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  env: state.store.env
+  store: state.store
 });
 
 export default connect(mapStateToProps)(Links);

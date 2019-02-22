@@ -1,16 +1,20 @@
 const data = require('../JSON/data.json');
 
-export default (env, domains) => {
+export default ({
+    env = data.env[0],
+    domain = 'all'
+  }) => {
+
   const LOCALHOST = 'localhost:3000';
-  const activeEnv = env || data.env[0];
-  const activeDomains= domains || Object.keys(data.domains);
+  const activeEnv = env;
+  const activeDomains = domain === 'all' ? Object.keys(data.domains) : domain.split();
   const isStage = () => activeEnv === 'stage';
   const isProd = () => activeEnv === 'prod';
 
   const getProtocol = () => isStage() || isProd() ? 'https://' : 'http://';
 
-  const getHost = (domain) => {
-    const domain_link = data.domains[domain][activeEnv];
+  const getHost = (hostDomain) => {
+    const domain_link = data.domains[hostDomain][activeEnv];
 
     // Stage
     if (isStage()) {
@@ -27,10 +31,10 @@ export default (env, domains) => {
     return `${LOCALHOST}?staging_domain=${domain_link}`;
   };
 
-  const activeLinks = activeDomains.map((domain) => {
+  const activeLinks = activeDomains.map((activeDomain) => {
     return {
-      link: getProtocol() + getHost(domain),
-      domain: domain
+      link: getProtocol() + getHost(activeDomain),
+      domain: activeDomain
     }
   });
 

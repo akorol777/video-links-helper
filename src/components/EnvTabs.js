@@ -21,7 +21,7 @@ export class EnvTabs extends Component {
             title={title}
             key={i}
             isActive={this.props.activeEnv === title}
-            handleChangeEnv={this.handleChangeEnv}
+            handleClick={this.handleChangeEnv}
           />
         })}
       </div>

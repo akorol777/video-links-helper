@@ -10,7 +10,7 @@ class Tab extends Component {
       <div
         className={classNames}
         onClick={() => {
-          this.props.handleChangeEnv(title)
+          this.props.handleClick(title)
         }}
       >
         {title}
