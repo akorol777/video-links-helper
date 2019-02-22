@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import Tab from './Tab';
 import { connect } from 'react-redux';
-import { choose } from '../actions/env';
-import { show_links } from '../actions/links';
+import { show_links, choose_env } from '../actions/actions';
 
 export class Tabs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      envTitles: this.props.envTitles,
-      defaultEnv: this.props.envTitles[0]
+      envTitles: this.props.envTitles
     };
     this.handleChangeEnv = this.handleChangeEnv.bind(this);
   }
 
   componentDidMount() {
-    this.props.chooseEnv(this.state.defaultEnv);
-    this.props.showLinks(this.state.defaultEnv, ['WOG', 'GREEN', 'DARK', 'MOVE', 'OMG']);
+    this.props.showLinks();
   }
 
   handleChangeEnv(env) {
     this.props.chooseEnv(env);
-    this.props.showLinks(env, ['WOG', 'GREEN', 'DARK', 'MOVE', 'OMG']);
+    this.props.showLinks();
   }
 
   render() {
@@ -41,11 +38,11 @@ export class Tabs extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  activeEnv: state.env
+  activeEnv: state.store.env
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  chooseEnv: (env) => dispatch(choose(env)),
+  chooseEnv: (env) => dispatch(choose_env(env)),
   showLinks: (env, domains) => dispatch(show_links(env, domains))
 });
 

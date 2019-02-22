@@ -24,8 +24,7 @@ class Links extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  activeEnv: state.env,
-  links: state.links
+  links: state.store.links
 });
 
 export default connect(mapStateToProps)(Links);
