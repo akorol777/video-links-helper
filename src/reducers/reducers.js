@@ -1,6 +1,7 @@
 const linksReducerDefaultState = {
   env: 'local',
-  domain: 'all'
+  domain: 'all',
+  pr_num: 2100
 };
 
 export default (state = linksReducerDefaultState, action) => {
@@ -15,6 +16,12 @@ export default (state = linksReducerDefaultState, action) => {
       return {
         ...state,
         domain: action.domain
+      };
+
+    case 'CHANGE_PR_NUM':
+      return {
+        ...state,
+        pr_num: action.pr_num
       };
 
     default:

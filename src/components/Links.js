@@ -7,7 +7,7 @@ class Links extends Component {
   render() {
     return (
       <div>
-        {getLinks(this.props.store).map(({link, domain}, i) => {
+        {getLinks(this.props.store).map(({link, domain, pr_num}, i) => {
           return <Link
             link = {link}
             key = {i}

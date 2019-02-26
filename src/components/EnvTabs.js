@@ -4,14 +4,9 @@ import { connect } from 'react-redux';
 import { choose_env } from '../actions/actions';
 
 export class EnvTabs extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChangeEnv = this.handleChangeEnv.bind(this);
-  }
-
-  handleChangeEnv(env) {
+  handleChangeEnv = (env) => {
     this.props.chooseEnv(env);
-  }
+  };
 
   render() {
     return (

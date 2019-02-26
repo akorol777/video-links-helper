@@ -3,6 +3,7 @@ import '../styles/App.scss';
 import EnvTabs from "./EnvTabs";
 import Links from "./Links";
 import DomainTabs from "./DomainTabs";
+import InputPR from "./InputPR";
 
 const data = require('../JSON/data.json');
 const envTitles = data.env;
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <div className="App container">
         <EnvTabs envTitles={envTitles}/>
+        <InputPR/>
         <DomainTabs domainTitles={domainTitles}/>
         <Links />
       </div>

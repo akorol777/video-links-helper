@@ -4,14 +4,9 @@ import { connect } from 'react-redux';
 import { choose_domain } from "../actions/actions";
 
 export class DomainTabs extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChangeDomain = this.handleChangeDomain.bind(this);
-  }
-
-  handleChangeDomain(domain) {
+  handleChangeDomain = (domain) => {
     this.props.chooseDomain(domain);
-  }
+  };
 
   render() {
     const domainTitles = ['all', ...this.props.domainTitles];

@@ -2,7 +2,8 @@ const data = require('../JSON/data.json');
 
 export default ({
     env = data.env[0],
-    domain = 'all'
+    domain = 'all',
+    pr_num
   }) => {
 
   const LOCALHOST = 'localhost:3000';
@@ -18,7 +19,6 @@ export default ({
 
     // Stage
     if (isStage()) {
-      const pr_num = 2129;
       return `streaming-engine-stagi-pr-${pr_num}.herokuapp.com?staging_domain=${domain_link}`
     }
 
