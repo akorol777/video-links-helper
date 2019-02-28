@@ -23,7 +23,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://akorol777.github.io/",
+  "homepage": "https://akorol777.github.io/video-links-helper",
   "browserslist": [
     ">0.2%",
     "not dead",
