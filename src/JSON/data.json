@@ -27,9 +27,9 @@
       "prod": "onlinemovies.guide"
     },
     "MSN": {
-      "local":"",
-      "stage": "",
-      "prod": ""
+      "local": null,
+      "stage": null,
+      "prod": "www.msn.com/en-us/entertainment/rf-watch-online"
     }
   },
   "traffic": "",

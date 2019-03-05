@@ -7,8 +7,10 @@ export default ({
   }) => {
 
   const LOCALHOST = 'localhost:3000';
+  const MSN_LOCALHOST = 'msn.lvh.me:3000/en-us/entertainment/rf-watch-online';
   const activeEnv = env;
   const activeDomains = domain === 'all' ? Object.keys(data.domains) : domain.split();
+  const msnStageLink = 'int1.msn.com/en-us/entertainment/rf-watch-online?rf_env=staging&sys_id=123456789';
   const isStage = () => activeEnv === 'stage';
   const isProd = () => activeEnv === 'prod';
 
@@ -16,10 +18,15 @@ export default ({
 
   const getHost = (hostDomain) => {
     const domain_link = data.domains[hostDomain][activeEnv];
+    const isMSN = () => hostDomain === 'MSN';
+    const domain = domain_link ? `?staging_domain=${domain_link}` : '';
 
     // Stage
     if (isStage()) {
-      return `streaming-engine-stagi-pr-${pr_num}.herokuapp.com?staging_domain=${domain_link}`
+      if (isMSN()) {
+        return msnStageLink;
+      }
+      return `streaming-engine-stagi-pr-${pr_num}.herokuapp.com${domain}`
     }
 
     // Prod
@@ -28,7 +35,8 @@ export default ({
     }
 
     // Local
-    return `${LOCALHOST}?staging_domain=${domain_link}`;
+    const host = isMSN() ? MSN_LOCALHOST : LOCALHOST;
+    return `${host}${domain}`;
   };
 
   const activeLinks = activeDomains.map((activeDomain) => {
