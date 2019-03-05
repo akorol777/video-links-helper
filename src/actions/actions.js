@@ -13,3 +13,8 @@ export const change_pr_num = (pr_num) => ({
   type: 'CHANGE_PR_NUM',
   pr_num
 });
+
+export const toggle_show_label = (show_label) => ({
+  type: 'TOGGLE_SHOW_LABEL',
+  show_label
+});

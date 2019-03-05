@@ -4,6 +4,7 @@ import EnvTabs from "./EnvTabs";
 import Links from "./Links";
 import DomainTabs from "./DomainTabs";
 import InputPR from "./InputPR";
+import LabelToggle from "./LabelToggle";
 
 const data = require('../JSON/data.json');
 const envTitles = data.env;
@@ -16,6 +17,7 @@ class App extends Component {
         <EnvTabs envTitles={envTitles}/>
         <InputPR/>
         <DomainTabs domainTitles={domainTitles}/>
+        <LabelToggle/>
         <Links />
       </div>
     );

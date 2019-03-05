@@ -1,7 +1,8 @@
 const linksReducerDefaultState = {
   env: 'local',
   domain: 'all',
-  pr_num: 2100
+  pr_num: 2100,
+  show_label: true
 };
 
 export default (state = linksReducerDefaultState, action) => {
@@ -22,6 +23,12 @@ export default (state = linksReducerDefaultState, action) => {
       return {
         ...state,
         pr_num: action.pr_num
+      };
+
+    case 'TOGGLE_SHOW_LABEL':
+      return {
+        ...state,
+        show_label: action.show_label
       };
 
     default:
