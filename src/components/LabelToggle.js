@@ -12,12 +12,10 @@ class LabelToggle extends Component {
     const text = this.props.show_label ? 'Hide labels' : 'Show labels';
 
     return (
-      <div className="row">
-        <div
-          className="button"
-          onClick={this.handleLabelToggle}
-        >{text}</div>
-      </div>
+      <div
+        className="button"
+        onClick={this.handleLabelToggle}
+      >{text}</div>
     )
   }
 }

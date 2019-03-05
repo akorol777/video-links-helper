@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Link = (props) => {
+export default (props) => {
   const renderLabel = (
     props.domain &&
     <div className="link__label">
@@ -8,17 +8,15 @@ const Link = (props) => {
     </div>
   );
 
-  return(
+  return (
     <div className="link__wrapper">
       {renderLabel}
       <a
         href={props.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="link"
+        className="link js-link-to-open"
       >{props.link}</a>
     </div>
   );
 };
-
-export default Link;
