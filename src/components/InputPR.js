@@ -10,6 +10,10 @@ class InputPR extends Component {
     };
   }
 
+  isStage = () => this.props.activeEnv === 'stage';
+
+  isMSN = () => this.props.activeDomain === 'MSN';
+
   onPrNumChange = (e) => {
     const prNum = e.target.value;
     this.setState(() => ({ prNum }));
@@ -17,7 +21,7 @@ class InputPR extends Component {
   };
 
   render() {
-    if (this.props.activeEnv === 'stage') {
+    if (this.isStage() && !this.isMSN()) {
       return (
         <input
           type="number"
@@ -34,6 +38,7 @@ class InputPR extends Component {
 
 const mapStateToProps = (state) => ({
   activeEnv: state.store.env,
+  activeDomain: state.store.domain,
   prNum: state.store.pr_num
 });
 
