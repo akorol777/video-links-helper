@@ -10,23 +10,24 @@ export default ({
   const MSN_LOCALHOST = 'msn.lvh.me:3000/en-us/entertainment/rf-watch-online';
   const activeEnv = env;
   const activeDomains = domain === 'all' ? Object.keys(data.domains) : domain.split();
-  const msnStageLink = 'int1.msn.com/en-us/entertainment/rf-watch-online?rf_env=staging&sys_id=123456789';
   const isStage = () => activeEnv === 'stage';
   const isProd = () => activeEnv === 'prod';
 
+  // PROTOCOL
   const getProtocol = () => isStage() || isProd() ? 'https://' : 'http://';
 
-  const getHost = (hostDomain) => {
-    const domain_link = data.domains[hostDomain][activeEnv];
-    const isMSN = () => hostDomain === 'MSN';
-    const domain = domain_link ? `?staging_domain=${domain_link}` : '';
+  // HOST
+  const getHost = (domain) => {
+    const domain_link = data.domains[domain][activeEnv];
+    const isMSN = () => domain === 'MSN';
+    const msnStageLink = 'int1.msn.com/en-us/entertainment/rf-watch-online?rf_env=staging&sys_id=123456789';
 
     // Stage
     if (isStage()) {
       if (isMSN()) {
         return msnStageLink;
       }
-      return `streaming-engine-stagi-pr-${pr_num}.herokuapp.com${domain}`
+      return `streaming-engine-stagi-pr-${pr_num}.herokuapp.com`
     }
 
     // Prod
@@ -35,13 +36,50 @@ export default ({
     }
 
     // Local
-    const host = isMSN() ? MSN_LOCALHOST : LOCALHOST;
-    return `${host}${domain}`;
+    return isMSN() ? MSN_LOCALHOST : LOCALHOST;
+  };
+
+  // PATH
+  const getPath = () => '';
+
+  // QUERY
+  const getQuery = (domain) => {
+    let query = '';
+    let sign = '?';
+    const isMSN = () => domain === 'MSN';
+
+    const addToQuery = (string) => {
+      query += sign + string;
+      sign = '&';
+    };
+
+    // Stage
+    if (isStage()) {
+      if (isMSN()) {
+        addToQuery(`rf_env=staging&sys_id=123456789`);
+      } else {
+        addToQuery(`staging_domain=${data.domains[domain][activeEnv]}`);
+      }
+
+    // Prod
+    } else if (isProd()) {
+
+    // Local
+    } else {
+      if (isMSN()) {
+
+      } else {
+        addToQuery(`staging_domain=${data.domains[domain][activeEnv]}`);
+      }
+    }
+
+    return query;
   };
 
   const activeLinks = activeDomains.map((activeDomain) => {
+    getQuery(activeDomain);
     return {
-      link: getProtocol() + getHost(activeDomain),
+      link: getProtocol() + getHost(activeDomain) + getPath() + getQuery(activeDomain),
       domain: activeDomain
     }
   });

@@ -1,7 +1,7 @@
 const linksReducerDefaultState = {
   env: 'local',
   domain: 'all',
-  pr_num: 2100,
+  pr_num: 2158,
   show_label: true
 };
 
