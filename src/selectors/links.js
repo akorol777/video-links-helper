@@ -3,7 +3,8 @@ const data = require('../JSON/data.json');
 export default ({
     env = data.env[0],
     domain = 'all',
-    pr_num
+    pr_num,
+    traffic = data.traffic[0]
   }) => {
 
   const LOCALHOST = 'localhost:3000';
@@ -72,6 +73,8 @@ export default ({
         addToQuery(`staging_domain=${data.domains[domain][activeEnv]}`);
       }
     }
+
+    addToQuery(`force_traffic=${traffic}`);
 
     return query;
   };

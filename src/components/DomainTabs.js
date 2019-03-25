@@ -3,7 +3,7 @@ import Tab from './Tab';
 import { connect } from 'react-redux';
 import { choose_domain } from "../actions/actions";
 
-export class DomainTabs extends Component {
+class DomainTabs extends Component {
   handleChangeDomain = (domain) => {
     this.props.chooseDomain(domain);
   };

@@ -32,6 +32,6 @@
       "prod": "www.msn.com/en-us/entertainment/rf-watch-online"
     }
   },
-  "traffic": "",
+  "traffic": ["paid", "direct"],
   "pages": ""
 }

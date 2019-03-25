@@ -3,6 +3,7 @@ import '../styles/App.scss';
 import EnvTabs from "./EnvTabs";
 import Links from "./Links";
 import DomainTabs from "./DomainTabs";
+import TrafficTabs from "./TrafficTabs";
 import InputPR from "./InputPR";
 import LabelToggle from "./LabelToggle";
 import Opener from "./Opener"
@@ -10,6 +11,7 @@ import Opener from "./Opener"
 const data = require('../JSON/data.json');
 const envTitles = data.env;
 const domainTitles = Object.keys(data.domains);
+const trafficTitles = data.traffic;
 
 class App extends Component {
   componentDidMount() {
@@ -28,6 +30,7 @@ class App extends Component {
         <EnvTabs envTitles={envTitles}/>
         <InputPR/>
         <DomainTabs domainTitles={domainTitles}/>
+        <TrafficTabs trafficTitles={trafficTitles}/>
         <Links />
         <div className="row">
           <LabelToggle/>

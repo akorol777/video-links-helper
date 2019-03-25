@@ -8,6 +8,11 @@ export const choose_domain = (domain) => ({
   domain
 });
 
+export const choose_traffic = (traffic) => ({
+  type: 'CHOOSE_TRAFFIC',
+  traffic
+});
+
 
 export const change_pr_num = (pr_num) => ({
   type: 'CHANGE_PR_NUM',

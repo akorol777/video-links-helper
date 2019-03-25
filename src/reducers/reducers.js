@@ -2,7 +2,8 @@ const linksReducerDefaultState = {
   env: 'local',
   domain: 'all',
   pr_num: 2158,
-  show_label: true
+  show_label: true,
+  traffic: 'paid'
 };
 
 export default (state = linksReducerDefaultState, action) => {
@@ -17,6 +18,12 @@ export default (state = linksReducerDefaultState, action) => {
       return {
         ...state,
         domain: action.domain
+      };
+
+    case 'CHOOSE_TRAFFIC':
+      return {
+        ...state,
+        traffic: action.traffic
       };
 
     case 'CHANGE_PR_NUM':
