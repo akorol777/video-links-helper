@@ -12,6 +12,16 @@ const envTitles = data.env;
 const domainTitles = Object.keys(data.domains);
 
 class App extends Component {
+  componentDidMount() {
+    // Open all links on Enter
+    document.body.addEventListener('keypress', function (e) {
+      var key = e.which || e.keyCode;
+      if (key === 13) {
+        document.getElementById('js-open-all-links-btn').click();
+      }
+    });
+  }
+
   render() {
     return (
       <div className="App container">

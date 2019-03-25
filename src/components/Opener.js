@@ -14,6 +14,7 @@ export default () => {
   return (
     <div
       className="button"
+      id="js-open-all-links-btn"
       onClick={handleOpeAll}
     >
       Open all
