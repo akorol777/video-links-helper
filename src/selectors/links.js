@@ -33,7 +33,11 @@ export default ({
 
   return dataToExport.activeDomains.map((activeDomain) => {
     return {
-      link: getProtocol(dataToExport) + getHost(activeDomain, dataToExport) + getPath(dataToExport) + getQuery(activeDomain, dataToExport),
+      link:
+        getProtocol(dataToExport) +
+        getHost(activeDomain, dataToExport) +
+        getPath(dataToExport) +
+        getQuery(activeDomain, dataToExport),
       domain: activeDomain
     }
   });
