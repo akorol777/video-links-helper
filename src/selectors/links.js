@@ -10,10 +10,15 @@ export default ({
 
   const LOCALHOST = 'localhost:3000';
   const MSN_LOCALHOST = 'msn.lvh.me:3000/en-us/entertainment/rf-watch-online';
+  const MSN_HOST = 'int1.msn.com';
+  const MSN_PATH = '/en-us/entertainment/rf-watch-online';
+  const MSN_QUERY = 'rf_env=staging&sys_id=123456789';
+
   const activeEnv = env;
   const activeDomains = domain === 'all' ? Object.keys(data.domains) : domain.split();
   const isStage = () => activeEnv === 'stage';
   const isProd = () => activeEnv === 'prod';
+  const isMSN = (activeDomain) => activeDomain === 'MSN';
 
   // PROTOCOL
   const getProtocol = () => isStage() || isProd() ? 'https://' : 'http://';
@@ -21,13 +26,11 @@ export default ({
   // HOST
   const getHost = (domain) => {
     const domain_link = data.domains[domain][activeEnv];
-    const isMSN = () => domain === 'MSN';
-    const msnStageLink = 'int1.msn.com/en-us/entertainment/rf-watch-online?rf_env=staging&sys_id=123456789';
 
     // Stage
     if (isStage()) {
-      if (isMSN()) {
-        return msnStageLink;
+      if (isMSN(domain)) {
+        return MSN_HOST;
       }
       return `streaming-engine-stagi-pr-${pr_num}.herokuapp.com`
     }
@@ -38,12 +41,19 @@ export default ({
     }
 
     // Local
-    return isMSN() ? MSN_LOCALHOST : LOCALHOST;
+    return isMSN(domain) ? MSN_LOCALHOST : LOCALHOST;
   };
 
   // PATH
   const getPath = () => {
     let path = '';
+
+    // Stage
+    if (isStage()) {
+      if (isMSN(domain)) {
+        path += MSN_PATH;
+      }
+    }
     path += `/${video_type}`;
 
     return path;
@@ -53,7 +63,6 @@ export default ({
   const getQuery = (domain) => {
     let query = '';
     let sign = '?';
-    const isMSN = () => domain === 'MSN';
 
     const addToQuery = (string) => {
       query += sign + string;
@@ -62,8 +71,8 @@ export default ({
 
     // Stage
     if (isStage()) {
-      if (isMSN()) {
-        addToQuery(`rf_env=staging&sys_id=123456789`);
+      if (isMSN(domain)) {
+        addToQuery(MSN_QUERY);
       } else {
         addToQuery(`staging_domain=${data.domains[domain][activeEnv]}`);
       }
@@ -73,7 +82,7 @@ export default ({
 
     // Local
     } else {
-      if (isMSN()) {
+      if (isMSN(domain)) {
 
       } else {
         addToQuery(`staging_domain=${data.domains[domain][activeEnv]}`);
@@ -85,13 +94,11 @@ export default ({
     return query;
   };
 
-  const activeLinks = activeDomains.map((activeDomain) => {
+  return activeDomains.map((activeDomain) => {
     getQuery(activeDomain);
     return {
-      link: getProtocol() + getHost(activeDomain) + getPath() + getQuery(activeDomain),
+      link: getProtocol() + getHost(activeDomain) + getPath(activeDomain) + getQuery(activeDomain),
       domain: activeDomain
     }
   });
-
-  return activeLinks
 }
