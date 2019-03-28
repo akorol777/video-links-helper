@@ -4,6 +4,7 @@ import EnvTabs from "./EnvTabs";
 import Links from "./Links";
 import DomainTabs from "./DomainTabs";
 import TrafficTabs from "./TrafficTabs";
+import VideoTypeTabs from "./VideoTypeTabs";
 import InputPR from "./InputPR";
 import LabelToggle from "./LabelToggle";
 import Opener from "./Opener"
@@ -12,6 +13,7 @@ const data = require('../JSON/data.json');
 const envTitles = data.env;
 const domainTitles = Object.keys(data.domains);
 const trafficTitles = data.traffic;
+const videoTypeTitles = data.video_type;
 
 class App extends Component {
   componentDidMount() {
@@ -31,6 +33,7 @@ class App extends Component {
         <InputPR/>
         <DomainTabs domainTitles={domainTitles}/>
         <TrafficTabs trafficTitles={trafficTitles}/>
+        <VideoTypeTabs videoTypeTitles={videoTypeTitles}/>
         <Links />
         <div className="row">
           <LabelToggle/>

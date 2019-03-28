@@ -13,6 +13,10 @@ export const choose_traffic = (traffic) => ({
   traffic
 });
 
+export const choose_video_type = (video_type) => ({
+  type: 'CHOOSE_VIDEO_TYPE',
+  video_type
+});
 
 export const change_pr_num = (pr_num) => ({
   type: 'CHANGE_PR_NUM',

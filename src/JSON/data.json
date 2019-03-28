@@ -33,5 +33,6 @@
     }
   },
   "traffic": ["paid", "direct"],
+  "video_type": ["tv-shows", "movies"],
   "pages": ""
 }

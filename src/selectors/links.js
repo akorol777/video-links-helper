@@ -4,7 +4,8 @@ export default ({
     env = data.env[0],
     domain = 'all',
     pr_num,
-    traffic = data.traffic[0]
+    traffic = data.traffic[0],
+    video_type = data.video_type[0]
   }) => {
 
   const LOCALHOST = 'localhost:3000';
@@ -41,7 +42,12 @@ export default ({
   };
 
   // PATH
-  const getPath = () => '';
+  const getPath = () => {
+    let path = '';
+    path += `/${video_type}`;
+
+    return path;
+  };
 
   // QUERY
   const getQuery = (domain) => {
