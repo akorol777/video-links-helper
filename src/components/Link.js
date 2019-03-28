@@ -3,9 +3,12 @@ import React from 'react';
 export default (props) => {
   const renderLabel = (
     props.domain &&
-    <div className="link__label">
-      {props.domain}
-    </div>
+    <a
+      href={props.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="link__label"
+    >{props.domain}</a>
   );
 
   return (
