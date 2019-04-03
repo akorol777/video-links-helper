@@ -10,7 +10,8 @@ export default ({
     domain = 'all',
     pr_num,
     traffic = data.traffic[0],
-    video_type = data.video_type[0]
+    video_type = data.video_type[0],
+    page_type = data[Object.keys(data)[0]]
   }) => {
 
   const dataToExport = {
@@ -20,6 +21,7 @@ export default ({
     traffic,
     video_type,
     data,
+    page_type_path: data.pages[page_type],
     LOCALHOST : 'localhost:3000',
     MSN_LOCALHOST : 'msn.lvh.me:3000/en-us/entertainment/rf-watch-online',
     MSN_HOST : 'int1.msn.com',

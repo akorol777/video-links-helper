@@ -4,7 +4,8 @@ const linksReducerDefaultState = {
   pr_num: 2158,
   show_label: true,
   traffic: 'paid',
-  video_type: 'tv-shows'
+  video_type: 'tv-shows',
+  page_type: 'list'
 };
 
 export default (state = linksReducerDefaultState, action) => {
@@ -31,6 +32,12 @@ export default (state = linksReducerDefaultState, action) => {
       return {
         ...state,
         video_type: action.video_type
+      };
+
+    case 'CHOOSE_PAGE_TYPE':
+      return {
+        ...state,
+        page_type: action.page_type
       };
 
     case 'CHANGE_PR_NUM':

@@ -18,6 +18,11 @@ export const choose_video_type = (video_type) => ({
   video_type
 });
 
+export const choose_page_type = (page_type) => ({
+  type: 'CHOOSE_PAGE_TYPE',
+  page_type
+});
+
 export const change_pr_num = (pr_num) => ({
   type: 'CHANGE_PR_NUM',
   pr_num

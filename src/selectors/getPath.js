@@ -4,8 +4,17 @@ export default (dataFromSelector) => {
     video_type,
     domain,
     isMSN,
+    page_type_path,
     MSN_PATH
   } = dataFromSelector;
+
+  const addToPath = string => {
+    if (!string.length) {
+      return;
+    }
+
+    return path += `/${string}`
+  };
 
   let path = '';
 
@@ -15,7 +24,9 @@ export default (dataFromSelector) => {
       path += MSN_PATH;
     }
   }
-  path += `/${video_type}`;
+
+  addToPath(video_type);
+  addToPath(page_type_path);
 
   return path;
 };
