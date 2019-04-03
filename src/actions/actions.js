@@ -28,6 +28,12 @@ export const change_pr_num = (pr_num) => ({
   pr_num
 });
 
+
+export const change_title = (title) => ({
+  type: 'CHANGE_TITLE',
+  title
+});
+
 export const toggle_show_label = (show_label) => ({
   type: 'TOGGLE_SHOW_LABEL',
   show_label

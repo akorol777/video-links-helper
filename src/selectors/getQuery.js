@@ -1,5 +1,4 @@
 export default (activeDomain, dataFromSelector) => {
-  console.log(activeDomain);
   const {
     isStage,
     isProd,

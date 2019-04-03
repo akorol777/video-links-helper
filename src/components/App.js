@@ -7,6 +7,7 @@ import TrafficTabs from "./TrafficTabs";
 import VideoTypeTabs from "./VideoTypeTabs";
 import PageTypeTabs from "./PageTypeTabs";
 import InputPR from "./InputPR";
+import InputTitle from "./InputTitle";
 import LabelToggle from "./LabelToggle";
 import Opener from "./Opener"
 
@@ -37,6 +38,7 @@ class App extends Component {
         <TrafficTabs trafficTitles={trafficTitles}/>
         <VideoTypeTabs videoTypeTitles={videoTypeTitles}/>
         <PageTypeTabs pageTypeTitles={pageTypeTitles}/>
+        <InputTitle/>
         <Links />
         <div className="row">
           <LabelToggle/>

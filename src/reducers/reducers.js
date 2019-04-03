@@ -5,7 +5,8 @@ const linksReducerDefaultState = {
   show_label: true,
   traffic: 'paid',
   video_type: 'tv-shows',
-  page_type: 'list'
+  page_type: 'list',
+  title: 'power'
 };
 
 export default (state = linksReducerDefaultState, action) => {
@@ -44,6 +45,12 @@ export default (state = linksReducerDefaultState, action) => {
       return {
         ...state,
         pr_num: action.pr_num
+      };
+
+    case 'CHANGE_TITLE':
+      return {
+        ...state,
+        title: action.title
       };
 
     case 'TOGGLE_SHOW_LABEL':
