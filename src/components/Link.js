@@ -1,14 +1,16 @@
 import React from 'react';
 
 export default (props) => {
+  const domain = props.domain;
+  const linkLabelClass = `link__label link__label__${domain.toLowerCase()}`;
   const renderLabel = (
-    props.domain &&
+    domain &&
     <a
       href={props.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="link__label"
-    >{props.domain}</a>
+      className={linkLabelClass}
+    >{domain}</a>
   );
 
   return (
