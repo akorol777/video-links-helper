@@ -5,10 +5,10 @@ import './styles/index.scss';
 import App from './components/App';
 import configureStore from './store/configureStore'
 
-if (process.env.NODE_ENV !== 'production') {
-  const {whyDidYouUpdate} = require('why-did-you-update');
-  whyDidYouUpdate(React);
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   const {whyDidYouUpdate} = require('why-did-you-update');
+//   whyDidYouUpdate(React);
+// }
 
 const store = configureStore();
 const jsx = (

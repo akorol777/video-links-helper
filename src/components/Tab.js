@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Tab extends Component {
+class Tab extends PureComponent {
 
   render() {
     const { title, isActive } = this.props;
