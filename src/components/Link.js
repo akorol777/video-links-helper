@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default (props) => {
-  const domain = props.domain;
+  const domain = props.domain || '';
   const linkLabelClass = `link__label link__label__${domain.toLowerCase()}`;
   const renderLabel = (
     domain &&
