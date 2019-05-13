@@ -1,7 +1,9 @@
 # Simple video links helper
-
 ### `yarn install`
 For install all stuff
+
+### `yarn add something`
+For install something
 
 ### `yarn start`
 
