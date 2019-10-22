@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { change_title, } from "../actions/actions";
+import { change_title } from "../actions/actions";
 
 class InputTitle extends Component {
   constructor(props) {
@@ -16,10 +16,13 @@ class InputTitle extends Component {
   getPlaceholder = () => (this.isTvShow() ? "title/season/episode" : "title");
 
   onTitleChange = (e) => {
-    const title = e.target.value;
+    const title = this.normalizeTitle(e.target.value);
     this.setState(() => ({ title }));
     this.props.chooseTitle(title);
   };
+
+  // Replace spaces and '_' to '-'
+  normalizeTitle = (title) => title.replace(/[\s+_]/g, '-').toLowerCase();
 
   render() {
     if (this.isTitlePage()) {
